@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import logo from '@/assets/logo.png'
+import logo from '@/assets/ecloud-blue.png'
 export default {
   name: 'Login',
   data() {

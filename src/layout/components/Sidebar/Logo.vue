@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import logo from '@/assets/logo.png'
+import logo from '@/assets/ecloud.png'
 export default {
   name: 'SidebarLogo',
   props: {
@@ -25,7 +25,7 @@ export default {
   },
   data() {
     return {
-      title: 'DaXiang',
+      title: 'AuTest',
       logo: logo
     }
   }

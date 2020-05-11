@@ -1,10 +1,10 @@
 <template>
   <div class="app-container">
-    <el-button @click="fetchOnlineAgentList" style="margin-bottom: 10px">刷新</el-button>
-    <el-table :data="agentList" highlight-current-row border v-loading="loading">
+    <el-button style="margin-bottom: 10px" @click="fetchOnlineAgentList">刷新</el-button>
+    <el-table v-loading="loading" :data="agentList" highlight-current-row border>
       <el-table-column label="状态" align="center" width="50">
         <template>
-          <div class="circle"/>
+          <div class="circle" />
         </template>
       </el-table-column>
       <el-table-column label="操作系统" property="osName" align="center" width="150" show-overflow-tooltip />
@@ -15,7 +15,7 @@
           {{ row.ip + ':' + row.port }}
         </template>
       </el-table-column>
-      <el-table-column label="设备/浏览器" align="center">
+      <el-table-column label="设备" align="center">
         <template scope="{ row }">
           <el-table :data="row.devices" border>
             <el-table-column label="设备id" prop="id" align="center" show-overflow-tooltip />
@@ -27,8 +27,8 @@
               </template>
             </el-table-column>
           </el-table>
-          <el-divider />
-          <el-table :data="row.browsers" border>
+          <!--          <el-divider />-->
+          <el-table :data="row.browsers" border hidden="hidden">
             <el-table-column label="浏览器id" prop="id" align="center" show-overflow-tooltip />
             <el-table-column label="浏览器类型" prop="type" align="center" show-overflow-tooltip />
             <el-table-column label="浏览器版本" prop="version" align="center" show-overflow-tooltip />
@@ -54,6 +54,9 @@ export default {
       agentList: []
     }
   },
+  created() {
+    this.fetchOnlineAgentList()
+  },
   methods: {
     fetchOnlineAgentList() {
       this.loading = true
@@ -63,9 +66,6 @@ export default {
         this.loading = false
       })
     }
-  },
-  created() {
-    this.fetchOnlineAgentList()
   }
 }
 </script>
